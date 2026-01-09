@@ -1,6 +1,6 @@
 from textwrap import fill
 
-from playwright.async_api import Page
+from playwright.sync_api import Page, expect
 
 
 class AdminLoginPage:
@@ -9,6 +9,8 @@ class AdminLoginPage:
         self.username= page.locator("#txtUsername")
         self.password=page.locator("#txtPassword")
         self.btn=page.locator("#btnLogin")
+        self.error_msg = page.locator("#spanMessage")
+
 
     def enter_username(self,username:str):
         self.username.fill(username)
@@ -23,3 +25,4 @@ class AdminLoginPage:
         self.enter_username(username)
         self.enter_password(password)
         self.enter_btn()
+

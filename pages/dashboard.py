@@ -7,5 +7,7 @@ class dashboard:
                self.dash=page.get_by_role("link",name="Dashboard")
 
 
+
            def is_dashboard_visible(self):
                expect(self.dash).to_be_visible()
+
