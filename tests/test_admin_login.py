@@ -67,3 +67,16 @@ def test_login_with_both_empty(page:Page):
 
     expect(login_Page.error_msg).to_be_visible()
     expect(login_Page.error_msg).to_have_text("Username cannot be empty")
+
+
+def test_admin_logout(page:Page):
+    login_Page=AdminLoginPage(page)
+    dashhh=dashboard(page)
+
+    page.goto("http://orangehrm.qedgetech.com")
+    login_Page.enter_username("Admin")
+    login_Page.enter_password("Qedge123!@#")
+    login_Page.enter_btn()
+    dashhh.is_welcome_visible()
+    dashhh.is_logout_visible()
+    expect(page).to_have_url("http://orangehrm.qedgetech.com/symfony/web/index.php/auth/login")
